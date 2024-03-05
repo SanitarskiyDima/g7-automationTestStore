@@ -29,3 +29,29 @@ export function findProduct(productName) {
 //         }
 //     })
 // }
+
+export function headlessLogin(loginname, password) {
+    let csrfToken;
+    let csrfInstance;
+
+    cy.request('GET', '/index.php?rt=account/login').then( response => {
+        let htmlResp = document.createElement('html');
+        htmlResp.innerHTML = response.body;
+        csrfToken = htmlResp.querySelector('#loginFrm [name="csrftoken"]').getAttribute('value');
+        csrfInstance = htmlResp.querySelector('#loginFrm [name="csrfinstance"]').getAttribute('value');
+    }).then(() => {
+            cy.request({
+                method: 'POST',
+                url: '/index.php?rt=account/login',
+                form: true,
+                body: {
+                    csrftoken: csrfToken,
+                    csrfinstance: csrfInstance,
+                    loginname: loginname,
+                    password: password
+                }
+            }).then( response => {
+                expect(response.status).eq(200);
+            })
+    })
+}

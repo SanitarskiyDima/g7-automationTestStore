@@ -1,6 +1,7 @@
 import user from '../fixtures/user.json'
 import loginPage from "../support/pages/LoginPage";
 import accountPage from "../support/pages/AccountPage";
+import {headlessLogin} from "../support/helper";
 
 describe('Authorization positive scenarios', () => {
     it('Authorization', () => {
@@ -13,6 +14,14 @@ describe('Authorization positive scenarios', () => {
 })
 
 describe('Authorization negative scenarios', () => {
+
+    it('Test auth helper', {retries: 2}, () => {
+        headlessLogin(user.loginname, user.password);
+
+        cy.visit('/index.php?rt=account/account');
+        cy.log('User first name should display on page');
+        accountPage.getFirstNameText().should('contain', user.firstname);
+    })
 
     it('Authorization without entered username', {retries: 2}, () => {
         loginPage.visit();
