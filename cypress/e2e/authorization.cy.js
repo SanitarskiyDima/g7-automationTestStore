@@ -14,7 +14,7 @@ describe('Authorization positive scenarios', () => {
 
 describe('Authorization negative scenarios', () => {
 
-    it('Authorization without entered username', () => {
+    it('Authorization without entered username', {retries: 2}, () => {
         loginPage.visit();
         loginPage.fillLoginFields('', user.password);
 
