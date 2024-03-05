@@ -19,7 +19,5 @@ module.exports = defineConfig({
           configureAllureAdapterPlugins(on, config);
           return config;
       },
-  },env:{
-      allure: true
-    }
+  }
 });
