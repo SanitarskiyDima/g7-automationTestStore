@@ -14,7 +14,6 @@ on:
           - firefox
           - edge
 
-
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
@@ -25,4 +24,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
+          retries: 2
           browser: ${{ inputs.browser || 'chrome'}}

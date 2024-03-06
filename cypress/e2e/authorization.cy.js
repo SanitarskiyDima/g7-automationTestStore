@@ -15,7 +15,7 @@ describe('Authorization positive scenarios', () => {
 
 describe('Authorization negative scenarios', () => {
 
-    it('Test auth helper', {retries: 2}, () => {
+    it('Test auth helper', () => {
         headlessLogin(user.loginname, user.password);
 
         cy.visit('/index.php?rt=account/account');
