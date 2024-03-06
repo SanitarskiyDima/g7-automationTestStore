@@ -7,7 +7,7 @@ on:
       username:
         description: 'A username passed from the caller workflow'
         default: 'john-doe'
-        required: false
+        required: true
         type: string
 
 
