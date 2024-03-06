@@ -6,7 +6,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
+      - name: Clone repository
         uses: actions/checkout@v4
 
       - name: Cypress run
