@@ -4,10 +4,14 @@ on:
   push:
   workflow_dispatch:
     inputs:
-      username:
-        description: 'A username passed from the caller workflow'
+      browser:
+        description: 'Please select a browser for test run'
         required: true
-        type: string
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - edge
 
 
 jobs:
