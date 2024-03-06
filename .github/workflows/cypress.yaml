@@ -1,4 +1,5 @@
 name: Cypress Tests
+run-name: Cypress tests in ${{ inputs.browser || 'chrome'}}
 
 on:
   push:
